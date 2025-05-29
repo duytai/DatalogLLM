@@ -1,0 +1,14 @@
+{
+  "overall": {
+    "violations": 0,
+    "compliances": 0,
+    "errors": 1
+  },
+  "details": {
+    "violations": [],
+    "compliances": [],
+    "errors": [
+      "configuration/phi4/programs/1012.dl"
+    ]
+  }
+}

@@ -1,0 +1,1 @@
+scp -r dtnguyen.2019@origami.smu.edu.sg:/common/home/users/d/dtnguyen.2019/runtime_verification/datalog/output/ .

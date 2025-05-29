@@ -3,6 +3,7 @@ from tqdm import tqdm
 from pathlib import Path
 import subprocess
 import pandas as pd
+import json
 
 
 def safe_run_souffle(program):
@@ -45,14 +46,19 @@ def main():
   violation_file = Path("violation.csv")
   violation_file.unlink(missing_ok=True)
 
-  df = pd.DataFrame({
-      "Violations": [len(violations)],
-      "Compliances": [len(compliances)],
-      "Errors": [len(errors)]
-  })
-
-  df.to_csv("configuration/phi4/stats.csv", index=False)
-  print(df)
+  stats = {
+      "overall": {
+          "violations": len(violations),
+          "compliances": len(compliances),
+          "errors": len(errors)
+      },
+      "details": {
+          "violations": violations,
+          "compliances": compliances,
+          "errors": errors
+      }
+  }
+  json.dump(stats, open("configuration/phi4/stats.json", "w"), indent=2)
 
 
 if __name__ == "__main__":
