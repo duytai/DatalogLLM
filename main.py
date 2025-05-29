@@ -27,7 +27,7 @@ def safe_read_csv(path):
 
 def main():
   violations, compliances, errors = [], [], []
-  programs = glob("configuration/phi4/programs/*.dl")
+  programs = glob("experiments/phi4/programs/*.dl")
 
   for program in tqdm(programs):
     violation_file = Path("violation.csv")
@@ -58,7 +58,7 @@ def main():
           "errors": errors
       }
   }
-  json.dump(stats, open("configuration/phi4/stats.json", "w"), indent=2)
+  json.dump(stats, open("experiments/phi4/stats.json", "w"), indent=2)
 
 
 if __name__ == "__main__":
