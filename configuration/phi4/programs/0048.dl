@@ -1,0 +1,15 @@
+.decl person(p: symbol)
+.decl liquor(l: symbol)
+.decl licensed_premises(lp: symbol)
+.decl age(p: symbol, a: number)
+.decl buys(buyer: symbol, consumer: symbol, l: symbol, lp: symbol)
+.decl violation(buyer: symbol, consumer: symbol, l: symbol, lp: symbol)
+
+violation(buyer, consumer, l, lp) :- person(buyer), person(consumer), liquor(l), licensed_premises(lp), buys(buyer, consumer, l, lp), age(consumer, a), a < 18.
+person("mother").
+person("daughter").
+liquor("non_alcoholic_beverage").
+licensed_premises("liquor_store").
+age("daughter", 16).
+buys("mother", "daughter", "non_alcoholic_beverage", "liquor_store").
+.output violation

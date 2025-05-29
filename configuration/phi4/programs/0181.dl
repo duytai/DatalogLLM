@@ -1,0 +1,15 @@
+.decl employer(e: symbol)
+.decl waitress(w: symbol)
+.decl employs(e: symbol, w: symbol)
+.decl age(w: symbol, a: number)
+.decl known_prostitute(w: symbol)
+.decl bad_character(w: symbol)
+.decl violation(e: symbol, w: symbol, a: number)
+
+violation(e, w, a) :- employer(e), waitress(w), employs(e, w), age(w, a), a < 17.
+violation(e, w, 0) :- employer(e), waitress(w), employs(e, w), (known_prostitute(w); bad_character(w)).
+employer("nightclub").
+waitress("waitress1").
+employs("nightclub", "waitress1").
+age("waitress1", 16).
+.output violation

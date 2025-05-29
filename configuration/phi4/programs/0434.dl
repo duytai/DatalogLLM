@@ -1,0 +1,14 @@
+.decl person(p: symbol)
+.decl equipment(e: symbol)
+.decl mechanical(e: symbol)
+.decl electrical(e: symbol)
+.decl tampers(p: symbol, e: symbol)
+.decl damages(p: symbol, e: symbol)
+.decl violation(p: symbol, e: symbol)
+
+violation(p, e) :- person(p), equipment(e), (tampers(p, e); damages(p, e)), (mechanical(e); electrical(e)).
+person("maintenance_worker").
+equipment("control_panel").
+damages("maintenance_worker", "control_panel").
+electrical("control_panel").
+.output violation

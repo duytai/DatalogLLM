@@ -1,0 +1,17 @@
+.decl person(p: symbol)
+.decl liquor(l: symbol)
+.decl platform(pl: symbol)
+.decl supplies(p: symbol, l: symbol, pl: symbol)
+.decl verifies_age(pl: symbol)
+.decl warns_underage(pl: symbol)
+.decl informs_penalties(pl: symbol)
+.decl violation(p: symbol, l: symbol, pl: symbol)
+
+violation(p, l, pl) :- person(p), liquor(l), platform(pl), supplies(p, l, pl),(!verifies_age(pl); !warns_underage(pl); !informs_penalties(pl)).
+person("customer1").
+person("customer2").
+liquor("whiskey").
+liquor("vodka").
+platform("online_grocery_service").
+verifies_age("online_grocery_service").
+.output violation

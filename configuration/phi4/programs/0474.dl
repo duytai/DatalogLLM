@@ -1,0 +1,17 @@
+.decl person(p: symbol)
+.decl device(d: symbol)
+.decl escalator(d: symbol)
+.decl travelator(d: symbol)
+.decl misuses(p: symbol, d: symbol)
+.decl violation(p: symbol, d: symbol)
+
+violation(p, d) :- person(p), device(d), misuses(p, d), (escalator(d); travelator(d)).
+person("teenager1").
+person("teenager2").
+device("travelator").
+travelator("travelator").
+misuses("teenager1", "travelator").
+misuses("teenager2", "travelator").
+violation("teenager1", "travelator").
+violation("teenager2", "travelator").
+.output violation

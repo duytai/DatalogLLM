@@ -1,0 +1,21 @@
+.decl person(p: symbol)
+.decl article(a: symbol)
+.decl area(ar: symbol)
+.decl paid_area(ar: symbol)
+.decl unpaid_area(ar: symbol)
+.decl transfers(p: symbol, a: symbol, from: symbol, to: symbol)
+.decl uses_ticket_gate(p: symbol, from: symbol, to: symbol)
+.decl violation(p: symbol, a: symbol, from: symbol, to: symbol)
+
+violation(p, a, f, t) :- person(p), article(a), area(f), area(t), transfers(p, a, f, t), ((paid_area(f), unpaid_area(t)); (unpaid_area(f), paid_area(t))), !uses_ticket_gate(p, f, t).
+person("friend1").
+person("friend2").
+article("valuable_item").
+area("train_platform").
+area("shopping_mall").
+paid_area("shopping_mall").
+unpaid_area("train_platform").
+transfers("friend1", "valuable_item", "train_platform", "shopping_mall").
+uses_ticket_gate("friend1", "train_platform", "shopping_mall").
+violation("friend1", "valuable_item", "train_platform", "shopping_mall").
+.output violation

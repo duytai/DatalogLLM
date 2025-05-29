@@ -1,0 +1,22 @@
+.decl person(p: symbol)
+.decl hazard(o: symbol)
+.decl obstruction(o: symbol)
+.decl causes(p: symbol, o: symbol)
+.decl violation(p: symbol, o: symbol)
+
+violation(p, o) :- person(p), (obstruction(o); hazard(o)), causes(p, o).
+person("child1").
+person("child2").
+person("parent1").
+person("parent2").
+hazard("proximity_to_tracks").
+obstruction("children_near_tracks").
+causes("child1", "proximity_to_tracks").
+causes("child1", "children_near_tracks").
+causes("child2", "proximity_to_tracks").
+causes("child2", "children_near_tracks").
+violation("parent1", "proximity_to_tracks").
+violation("parent1", "children_near_tracks").
+violation("parent2", "proximity_to_tracks").
+violation("parent2", "children_near_tracks").
+.output violation

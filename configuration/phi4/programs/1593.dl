@@ -1,0 +1,13 @@
+.decl person(p: symbol)
+.decl administrative_charge(c: symbol)
+.decl required_to_pay(p: symbol, c: symbol)
+.decl has_paid(p: symbol, c: symbol)
+.decl violation(p: symbol, c: symbol)
+
+violation(p, c) :- person(p), administrative_charge(c), required_to_pay(p, c), !has_paid(p, c).
+person("shopper1").
+administrative_charge("dress_charge").
+required_to_pay("shopper1", "dress_charge").
+has_paid("shopper1", "dress_charge").
+violation("shopper1", "dress_charge").
+.output violation

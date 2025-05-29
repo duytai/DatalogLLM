@@ -1,0 +1,20 @@
+.decl person(p: symbol)
+.decl liquor(l: symbol)
+.decl supplies(s: symbol, r: symbol, l: symbol)
+.decl age(p: symbol, a: number)
+.decl known_drunk(p: symbol)
+.decl violation(s: symbol, r: symbol, l: symbol)
+
+violation(s, r, l) :- person(s), person(r), liquor(l), supplies(s, r, l), (known_drunk(r); (age(r, a), a < 18)).
+person("parent").
+person("child").
+person("friend1").
+person("friend2").
+liquor("alcohol").
+supplies("parent", "child", "alcohol").
+supplies("parent", "friend1", "alcohol").
+supplies("parent", "friend2", "alcohol").
+age("child", 16).
+age("friend1", 17).  // Assuming friend1 is 17
+age("friend2", 17).  // Assuming friend2 is 17
+.output violation

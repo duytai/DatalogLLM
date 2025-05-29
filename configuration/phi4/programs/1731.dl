@@ -1,0 +1,14 @@
+.decl person(p: symbol)
+.decl vehicle(v: symbol)
+.decl area(a: symbol)
+.decl pedestrian_only(a: symbol)
+.decl drives(p: symbol, v: symbol, a: symbol)
+.decl violation(p: symbol, v: symbol, a: symbol)
+
+violation(p, v, a) :- person(p), vehicle(v), area(a), drives(p, v, a), pedestrian_only(a).
+person("tourist").
+vehicle("rented_car").
+area("shopping_street").
+pedestrian_only("shopping_street").
+drives("tourist", "rented_car", "shopping_street").
+.output violation

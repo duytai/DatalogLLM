@@ -1,0 +1,31 @@
+Souffle program:
+{program}
+
+Scenario:
+{scenario}
+
+Instruction:
+Carefully extract all souffle facts from the given scenario, using the provided predicates (.decl) as a guide. Follow these steps:
+1. Think step by step: Reason through the scenario methodically to identify relevant facts.
+2. Apply predicates: Only extract facts that match the structure of the provided predicates.
+3. Make reasonable assumptions when information is implicit, but ensure they are logically sound and clearly derived from the scenario.
+4. Must respect formatting rules for souffle:
+   - Use only positive facts (no rules or negations).
+   - Use quoted strings for symbolic constants (e.g., `"student1"`).
+   - Use integers or decimal numbers for numeric values (e.g., `42`, `3.14`).
+   - Do not invent predicates if none are provided.
+5. Final Output: Present only the final list of souffle facts in a valid format.
+
+Correct souffle format:
+```souffle
+person("student").
+age("student", 30).
+```
+
+Wrong souffle format:
+```souffle
+not person("student").
+!person("student").
+~person("student").
+:-person("student").
+```

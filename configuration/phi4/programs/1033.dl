@@ -1,0 +1,29 @@
+.decl person(p: symbol)
+.decl activity(a: symbol)
+.decl has_permission(p: symbol)
+.decl performs(p: symbol, a: symbol)
+.decl hawking(a: symbol)
+.decl begging(a: symbol)
+.decl touting(a: symbol)
+.decl selling_goods(a: symbol)
+.decl distributing_promo(a: symbol)
+.decl violation(p: symbol, a: symbol)
+
+violation(p, a) :- person(p), activity(a), performs(p, a), (hawking(a); begging(a); touting(a); selling_goods(a); distributing_promo(a)), !has_permission(p).
+person("volunteer1").
+person("volunteer2").
+person("volunteer3").
+activity("begging").
+activity("distributing_promo").
+has_permission("volunteer1").
+has_permission("volunteer2").
+has_permission("volunteer3").
+performs("volunteer1", "begging").
+performs("volunteer2", "begging").
+performs("volunteer3", "distributing_promo").
+hawking("begging").
+begging("begging").
+touting("begging").
+selling_goods("begging").
+distributing_promo("distributing_promo").
+.output violation

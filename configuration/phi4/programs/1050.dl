@@ -1,0 +1,15 @@
+.decl person(p: symbol)
+.decl area(a: symbol)
+.decl public_area(a: symbol)
+.decl enters(p: symbol, a: symbol)
+.decl leaves(p: symbol, a: symbol)
+.decl uses_designated_means(p: symbol, a: symbol)
+.decl violation(p: symbol, a: symbol)
+
+violation(p, a) :- person(p), area(a), (enters(p, a); leaves(p, a)), !public_area(a).
+violation(p, a) :- person(p), area(a), (enters(p, a); leaves(p, a)), !uses_designated_means(p, a).
+person("man1").
+area("subway_station").
+public_area("subway_station").
+enters("man1", "subway_station").
+.output violation

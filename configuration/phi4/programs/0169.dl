@@ -1,0 +1,19 @@
+.decl person(p: symbol)
+.decl premises(pr: symbol)
+.decl licensed_premises(pr: symbol)
+.decl assigns(p: symbol, pr: symbol)
+.decl leases(p: symbol, pr: symbol)
+.decl lets(p: symbol, pr: symbol)
+.decl relinquishes_management(p: symbol, pr: symbol)
+.decl violation(p: symbol, pr: symbol)
+
+violation(p, pr) :- person(p), premises(pr), licensed_premises(pr), (assigns(p, pr); leases(p, pr); lets(p, pr); relinquishes_management(p, pr)).
+person("manager").
+person("bar_owner").  // Assuming the bar owner is a person involved in the scenario.
+premises("bar_premises").
+licensed_premises("bar_premises").  // Assuming the goal is to obtain a license.
+assigns("manager", "bar_premises").
+leases("manager", "bar_premises").
+lets("manager", "bar_premises").
+relinquishes_management("manager", "bar_premises").
+.output violation

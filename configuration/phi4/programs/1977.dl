@@ -1,0 +1,14 @@
+.decl person(p: symbol)
+.decl vehicle(v: symbol)
+.decl specified_transport(v: symbol)
+.decl smokes(p: symbol, v: symbol)
+.decl violation(p: symbol, v: symbol)
+
+violation(p, v) :- person(p), vehicle(v), specified_transport(v), smokes(p, v).
+person("passenger1").
+person("driver1").
+vehicle("private_hire_car").
+specified_transport("private_hire_car").
+smokes("passenger1", "private_hire_car").
+violation("passenger1", "private_hire_car").
+.output violation

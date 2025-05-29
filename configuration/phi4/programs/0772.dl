@@ -1,0 +1,12 @@
+.decl person(p: symbol)
+.decl consumes(p: symbol, item: symbol)
+.decl chewing_gum(item: symbol)
+.decl bubble_gum(item: symbol)
+.decl violation(p: symbol, item: symbol)
+
+violation(p, item) :- person(p), consumes(p, item), (chewing_gum(item); bubble_gum(item)).
+person("teenager").
+consumes("teenager", "gum").
+chewing_gum("gum").
+violation("teenager", "gum").
+.output violation

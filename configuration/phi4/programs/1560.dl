@@ -1,0 +1,17 @@
+.decl person(p: symbol)
+.decl ticket(t: symbol)
+.decl authority(a: symbol)
+.decl requests_ticket(a: symbol, p: symbol)
+.decl fails_to_produce_ticket(p: symbol, t: symbol)
+.decl fails_to_surrender_ticket(p: symbol, t: symbol)
+.decl violation(p: symbol, t: symbol, a: symbol)
+
+violation(p, t, a) :- person(p), ticket(t), authority(a), requests_ticket(a, p), (fails_to_produce_ticket(p, t); fails_to_surrender_ticket(p, t)).
+person("Sarah").
+ticket("bus_pass").
+authority("bus_driver").
+requests_ticket("bus_driver", "Sarah").
+fails_to_produce_ticket("Sarah", "bus_pass").
+fails_to_surrender_ticket("Sarah", "bus_pass").
+violation("Sarah", "bus_pass", "bus_driver").
+.output violation

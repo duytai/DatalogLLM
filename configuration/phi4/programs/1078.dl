@@ -1,0 +1,14 @@
+.decl person(p: symbol)
+.decl area(a: symbol)
+.decl prohibited_area(a: symbol)
+.decl smokes(p: symbol, a: symbol)
+.decl violation(p: symbol, a: symbol)
+
+violation(p, a) :- person(p), area(a), prohibited_area(a), smokes(p, a).
+person("passenger1").
+area("mrt_train").
+prohibited_area("mrt_train").
+area("designated_smoking_area").
+smokes("passenger1", "mrt_train").
+violation("passenger1", "mrt_train").
+.output violation

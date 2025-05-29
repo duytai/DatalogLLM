@@ -1,0 +1,21 @@
+.decl premise(pr: symbol)
+.decl licensed_premise(pr: symbol)
+.decl notice(n: symbol)
+.decl age_restriction(n: symbol)
+.decl trading_hour(n: symbol)
+
+.decl required(pr: symbol, n: symbol)
+.decl display(pr: symbol, n: symbol)
+.decl violation(pr: symbol, n: symbol)
+
+violation(pr, n) :- licensed_premise(pr), notice(n), (age_restriction(n);trading_hour(n)), required(pr, n), !display(pr, n).
+licensed_premise("nightclub").
+notice("age_restriction_notice").
+notice("trading_hour_notice").
+age_restriction("age_restriction_notice").
+trading_hour("trading_hour_notice").
+required("age_restriction_notice", "nightclub").
+required("trading_hour_notice", "nightclub").
+violation("age_restriction_notice", "nightclub").
+violation("trading_hour_notice", "nightclub").
+.output violation

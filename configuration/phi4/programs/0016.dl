@@ -1,0 +1,18 @@
+.decl person(p: symbol)
+.decl liquor(l: symbol)
+.decl age(p: symbol, a: number)
+.decl buys(p: symbol, l: symbol)
+.decl attempts_to_buy(p: symbol, l: symbol)
+.decl violation(p: symbol, l: symbol)
+
+violation(p, l) :- person(p), liquor(l), age(p, a), a < 18, (buys(p, l); attempts_to_buy(p, l)).
+person("student1").
+person("student2").
+person("friend").
+age("student1", 16).
+age("student2", 16).
+age("friend", 19).
+buys("friend", "beer").
+violation("student1", "beer").
+violation("student2", "beer").
+.output violation

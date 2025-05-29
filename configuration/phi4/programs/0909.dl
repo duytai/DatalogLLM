@@ -1,0 +1,13 @@
+.decl person(p: symbol)
+.decl premises(pr: symbol)
+.decl loiters(p: symbol, pr: symbol)
+.decl passenger(p: symbol)
+.decl has_legitimate_business(p: symbol)
+.decl violation(p: symbol, pr: symbol)
+
+violation(p, pr) :- person(p), premises(pr), loiters(p, pr), (!passenger(p); !has_legitimate_business(pr)).
+person("tourist").
+premises("train_platform").
+loiters("tourist", "train_platform").
+violation("tourist", "train_platform").
+.output violation

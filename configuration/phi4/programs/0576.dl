@@ -1,0 +1,19 @@
+.decl person(p: symbol)
+.decl railway_property(rp: symbol)
+.decl defaces(p: symbol, rp: symbol)
+.decl damages(p: symbol, rp: symbol)
+.decl improperly_removes(p: symbol, rp: symbol)
+.decl violation(p: symbol, rp: symbol)
+
+violation(p, rp) :- person(p), railway_property(rp), (defaces(p, rp); damages(p, rp); improperly_removes(p, rp)).
+person("teenager1").
+person("teenager2").
+person("teenager3").
+railway_property("ticket_machine").
+damages("teenager1", "ticket_machine").
+damages("teenager2", "ticket_machine").
+damages("teenager3", "ticket_machine").
+violation("teenager1", "ticket_machine").
+violation("teenager2", "ticket_machine").
+violation("teenager3", "ticket_machine").
+.output violation

@@ -1,0 +1,16 @@
+.decl person(p: symbol)
+.decl license_holder(h: symbol)
+.decl licensed_premises(l: symbol)
+.decl age(p: symbol, a: number)
+.decl consumes(p: symbol, l: symbol)
+.decl permits(h: symbol, p: symbol, l: symbol)
+.decl violation(h: symbol, p: symbol, l: symbol)
+
+violation(h, p, l) :- person(p), license_holder(h), licensed_premises(l), age(p, a), a < 18, consumes(p, l), permits(h, p, l).
+person("teenager1").
+age("teenager1", 17).
+licensed_premises("club").
+license_holder("club_owner").
+consumes("teenager1", "club").
+permits("club_owner", "teenager1", "club").
+.output violation

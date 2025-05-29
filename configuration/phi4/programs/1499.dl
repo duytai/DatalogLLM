@@ -1,0 +1,16 @@
+.decl person(p: symbol)
+.decl ticket(t: symbol)
+.decl damages(p: symbol, t: symbol)
+.decl improperly_alters(p: symbol, t: symbol)
+.decl violation(p: symbol, t: symbol)
+
+violation(p, t) :- person(p), ticket(t), damages(p, t).
+violation(p, t) :- person(p), ticket(t), improperly_alters(p, t).
+person("friend1").
+person("friend2").
+person("friend3").
+ticket("shared_ticket").
+improperly_alters("friend1", "shared_ticket").
+improperly_alters("friend2", "shared_ticket").
+improperly_alters("friend3", "shared_ticket").
+.output violation

@@ -1,0 +1,19 @@
+.decl person(p: symbol)
+.decl premises(pr: symbol)
+.decl licensed_premises(pr: symbol)
+.decl permits(p: symbol, pr: symbol)
+.decl drunk_behavior(q: symbol, pr: symbol)
+.decl disorderly_behavior(q: symbol, pr: symbol)
+.decl violation(p: symbol, pr: symbol)
+
+violation(p, pr) :- person(p), premises(pr), licensed_premises(pr), permits(p, pr), (drunk_behavior(q, pr); disorderly_behavior(q, pr)).
+licensed_premises("club").
+person("patron1").
+person("patron2").
+permits("patron1", "club").
+permits("patron2", "club").
+drunk_behavior("patron1", "club").
+disorderly_behavior("patron2", "club").
+violation("patron1", "club").
+violation("patron2", "club").
+.output violation

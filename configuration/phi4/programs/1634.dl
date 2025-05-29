@@ -1,0 +1,14 @@
+.decl person(p: symbol)
+.decl motor_vehicle(mv: symbol)
+.decl premises(pr: symbol)
+.decl leaves(p: symbol, mv: symbol, pr: symbol)
+.decl has_written_permission(p: symbol, pr: symbol)
+.decl violation(p: symbol, mv: symbol, pr: symbol)
+
+violation(p, mv, pr) :- person(p), motor_vehicle(mv), premises(pr), leaves(p, mv, pr), !has_written_permission(p, pr).
+person("owner1").
+motor_vehicle("van1").
+premises("train_station_restricted_area").
+leaves("owner1", "van1", "train_station_restricted_area").
+violation("owner1", "van1", "train_station_restricted_area").
+.output violation

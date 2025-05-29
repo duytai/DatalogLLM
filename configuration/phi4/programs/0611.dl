@@ -1,0 +1,12 @@
+.decl person(p: symbol)
+.decl hazard(o: symbol)
+.decl obstruction(o: symbol)
+.decl causes(p: symbol, o: symbol)
+.decl violation(p: symbol, o: symbol)
+
+violation(p, o) :- person(p), (obstruction(o); hazard(o)), causes(p, o).
+person("teenager_group").
+obstruction("restricted_area").
+causes("teenager_group", "restricted_area").
+violation("teenager_group", "restricted_area").
+.output violation

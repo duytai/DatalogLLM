@@ -1,0 +1,20 @@
+.decl person(p: symbol)
+.decl premises(pr: symbol)
+.decl enters(p: symbol, pr: symbol)
+.decl remains(p: symbol, pr: symbol)
+.decl unfit_condition(p: symbol)
+.decl clothing(p: symbol, c: symbol)
+.decl causes_soiling(c: symbol)
+.decl causes_damage(c: symbol)
+.decl causes_injury(c: symbol)
+.decl violation(p: symbol, pr: symbol, c: symbol)
+
+violation(p, pr, "_") :- person(p), premises(pr), (enters(p, pr); remains(p, pr)), unfit_condition(p).
+violation(p, pr, c) :- person(p), premises(pr), (enters(p, pr); remains(p, pr)), clothing(p, c), (causes_soiling(c); causes_damage(c); causes_injury(c)).
+person("worker1").
+premises("platform1").
+enters("worker1", "platform1").
+unfit_condition("worker1").
+clothing("worker1", "boots1").
+causes_soiling("boots1").
+.output violation

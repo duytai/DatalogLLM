@@ -1,0 +1,13 @@
+.decl person(p: symbol)
+.decl premises(pr: symbol)
+.decl spits(p: symbol, pr: symbol)
+.decl litters(p: symbol, pr: symbol)
+.decl soils(p: symbol, pr: symbol)
+.decl violation(p: symbol, pr: symbol)
+
+violation(p, pr) :- person(p), premises(pr), (spits(p, pr); litters(p, pr); soils(p, pr)).
+person("passenger1").
+premises("train").
+litters("passenger1", "train").
+soils("passenger1", "train").
+.output violation

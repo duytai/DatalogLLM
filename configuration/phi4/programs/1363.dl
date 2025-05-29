@@ -1,0 +1,14 @@
+.decl person(p: symbol)
+.decl property(prop: symbol)
+.decl authorized_person(p: symbol)
+.decl finds(p: symbol, prop: symbol)
+.decl hands_over(p: symbol, prop: symbol, ap: symbol)
+.decl violation(p: symbol, prop: symbol, ap: symbol)
+
+violation(p, prop, ap) :- person(p), person(ap), property(prop), finds(p, prop), hands_over(p, prop, ap), !authorized_person(ap).
+person("Sarah").
+property("wallet").
+finds("Sarah", "wallet").
+hands_over("Sarah", "wallet", "Sarah").
+authorized_person("Sarah").
+.output violation

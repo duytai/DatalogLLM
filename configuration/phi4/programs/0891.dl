@@ -1,0 +1,8 @@
+.decl person(p: symbol)
+.decl causes_nuisance(p: symbol)
+.decl causes_annoyance(p: symbol)
+.decl violation(p: symbol)
+
+violation(p) :- person(p), (causes_nuisance(p); causes_annoyance(p)).
+person("passenger1").
+.output violation

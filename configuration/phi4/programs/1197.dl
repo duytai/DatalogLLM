@@ -1,0 +1,14 @@
+.decl person(p: symbol)
+.decl substance(s: symbol)
+.decl dangerous(s: symbol)
+.decl flammable(s: symbol)
+.decl brings(p: symbol, s: symbol)
+.decl violation(p: symbol, s: symbol)
+
+violation(p, s) :- person(p), substance(s), brings(p, s), (dangerous(s); flammable(s)).
+person("passenger1").
+substance("party_poppers").
+flammable("party_poppers").
+brings("passenger1", "party_poppers").
+violation("passenger1", "party_poppers").
+.output violation

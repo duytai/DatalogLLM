@@ -1,0 +1,26 @@
+.decl person(p: symbol)
+.decl train(t: symbol)
+.decl enters(p: symbol, t: symbol)
+.decl remains(p: symbol, t: symbol)
+.decl is_full(t: symbol)
+.decl violation(p: symbol, t: symbol)
+
+violation(p, t) :- person(p), train(t), (enters(p, t); remains(p, t)), is_full(t).
+person("parent1").
+person("parent2").
+person("child1").
+person("child2").
+person("child3").
+train("train1").
+enters("parent1", "train1").
+enters("parent2", "train1").
+enters("child1", "train1").
+enters("child2", "train1").
+enters("child3", "train1").
+is_full("train1").
+violation("parent1", "train1").
+violation("parent2", "train1").
+violation("child1", "train1").
+violation("child2", "train1").
+violation("child3", "train1").
+.output violation

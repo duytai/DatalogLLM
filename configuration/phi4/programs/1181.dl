@@ -1,0 +1,14 @@
+.decl person(p: symbol)
+.decl animal(a: symbol)
+.decl premises(pr: symbol)
+.decl brings(p: symbol, a: symbol, pr: symbol)
+.decl service_animal(a: symbol)
+.decl violation(p: symbol, a: symbol, pr: symbol)
+
+violation(p, a, pr) :- person(p), animal(a), premises(pr), brings(p, a, pr), !service_animal(a).
+person("teenager_group").
+animal("stray_cat").
+premises("train_platform").
+brings("teenager_group", "stray_cat", "train_platform").
+violation("teenager_group", "stray_cat", "train_platform").
+.output violation

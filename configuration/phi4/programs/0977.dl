@@ -1,0 +1,20 @@
+.decl person(p: symbol)
+.decl area(a: symbol)
+.decl train_area(a: symbol)
+.decl meant_for_passengers(a: symbol)
+.decl enters(p: symbol, a: symbol)
+.decl violation(p: symbol, a: symbol)
+
+violation(p, a) :- person(p), area(a), train_area(a), enters(p, a), !meant_for_passengers(a).
+person("teenager1").
+person("teenager2").
+person("teenager3").
+area("driver_cabin").
+train_area("driver_cabin").
+enters("teenager1", "driver_cabin").
+enters("teenager2", "driver_cabin").
+enters("teenager3", "driver_cabin").
+violation("teenager1", "driver_cabin").
+violation("teenager2", "driver_cabin").
+violation("teenager3", "driver_cabin").
+.output violation

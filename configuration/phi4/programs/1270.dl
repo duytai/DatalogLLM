@@ -1,0 +1,22 @@
+.decl person(p: symbol)
+.decl premises(pr: symbol)
+.decl matter(m: symbol)
+.decl sewage(m: symbol)
+.decl waste(m: symbol)
+.decl offensive_matter(m: symbol)
+.decl causes_entry(p: symbol, m: symbol, pr: symbol)
+.decl violation(p: symbol, pr: symbol)
+
+violation(p, pr) :- person(p), premises(pr), causes_entry(p, m, pr), (sewage(m); waste(m); offensive_matter(m)).
+person("commuter").
+premises("subway_station").
+matter("empty_food_wrappers").
+matter("used_tissues").
+matter("overflowing_trash_can").
+waste("empty_food_wrappers").
+waste("used_tissues").
+offensive_matter("foul_odor").
+causes_entry("commuter", "empty_food_wrappers", "subway_station").
+causes_entry("commuter", "used_tissues", "subway_station").
+violation("commuter", "subway_station").
+.output violation

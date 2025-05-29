@@ -1,0 +1,14 @@
+.decl person(p: symbol)
+.decl vehicle(v: symbol)
+.decl sign(s: symbol)
+.decl drives(p: symbol, v: symbol)
+.decl not_complying(p: symbol, s: symbol)
+.decl violation(p: symbol, v: symbol, s: symbol)
+
+violation(p, v, s) :- person(p), vehicle(v), sign(s), drives(p, v), not_complying(p, s).
+person("driver1").
+vehicle("truck1").
+sign("bus_stop_sign").
+drives("driver1", "truck1").
+not_complying("driver1", "bus_stop_sign").
+.output violation

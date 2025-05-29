@@ -1,0 +1,16 @@
+.decl person(p: symbol)
+.decl notice(n: symbol)
+.decl sign(s: symbol)
+.decl direction(d: symbol)
+.decl authorized_person(ap: symbol)
+.decl issues(ap: symbol, n: symbol)
+.decl complies(p: symbol, n: symbol)
+.decl violation(p: symbol, n: symbol)
+
+violation(p, n) :- person(p), person(ap), (sign(n); notice(n); direction(n)), authorized_person(ap), issues(ap, n), !complies(p, n).
+person("passerby").
+notice("construction_notice").
+authorized_person("worker").
+issues("worker", "construction_notice").
+violation("passerby", "construction_notice").
+.output violation

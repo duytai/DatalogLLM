@@ -1,0 +1,12 @@
+.decl person(p: symbol)
+.decl area(a: symbol)
+.decl designated_area(a: symbol)
+.decl consumes(p: symbol, a: symbol)
+.decl violation(p: symbol, a: symbol)
+
+violation(p, a) :- person(p), area(a), consumes(p, a), !designated_area(a).
+person("commuter").
+area("train_station").
+designated_area("train_station").
+consumes("commuter", "train_station").
+.output violation

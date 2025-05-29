@@ -1,0 +1,16 @@
+.decl person(p: symbol)
+.decl premises(pr: symbol)
+.decl licensed_premises(pr: symbol)
+.decl assigns(p: symbol, pr: symbol)
+.decl leases(p: symbol, pr: symbol)
+.decl lets(p: symbol, pr: symbol)
+.decl relinquishes_management(p: symbol, pr: symbol)
+.decl violation(p: symbol, pr: symbol)
+
+violation(p, pr) :- person(p), premises(pr), licensed_premises(pr), (assigns(p, pr); leases(p, pr); lets(p, pr); relinquishes_management(p, pr)).
+person("owner1").
+person("investor1").
+premises("nightclub1").
+licensed_premises("nightclub1").
+assigns("investor1", "nightclub1").
+.output violation

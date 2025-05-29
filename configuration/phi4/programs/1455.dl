@@ -1,0 +1,12 @@
+.decl person(p: symbol)
+.decl train(t: symbol)
+.decl travels(p: symbol, t: symbol)
+.decl valid_condition(p: symbol, t: symbol)
+.decl violation(p: symbol, t: symbol)
+
+violation(p, t) :- person(p), train(t), travels(p, t), !valid_condition(p, t).
+person("sarah").
+train("train1").
+travels("sarah", "train1").
+violation("sarah", "train1").
+.output violation

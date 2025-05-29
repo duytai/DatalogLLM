@@ -1,0 +1,14 @@
+.decl person(p: symbol)
+.decl device(d: symbol)
+.decl emergency_device(d: symbol)
+.decl safety_device(d: symbol)
+.decl misuses(p: symbol, d: symbol)
+.decl violation(p: symbol, d: symbol)
+
+violation(p, d) :- person(p), device(d), misuses(p, d), (emergency_device(d); safety_device(d)).
+person("teenager1").
+device("emergency_stop_button").
+emergency_device("emergency_stop_button").
+misuses("teenager1", "emergency_stop_button").
+violation("teenager1", "emergency_stop_button").
+.output violation

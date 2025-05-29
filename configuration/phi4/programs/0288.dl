@@ -1,0 +1,17 @@
+.decl person(p: symbol)
+.decl buys_online(p: symbol)
+.decl age(p: symbol, a: number)
+.decl warned(p: symbol)
+.decl informed_of_penalty(p: symbol)
+.decl violation(p: symbol, a: number)
+
+violation(p, a) :- person(p), buys_online(p), age(p, a), a < 18, (!warned(p); !informed_of_penalty(p)).
+person("customer1").
+buys_online("customer1").
+age("customer1", 17).
+person("customer2").
+buys_online("customer2").
+age("customer2", 20).
+warned("customer2").
+informed_of_penalty("customer2").
+.output violation

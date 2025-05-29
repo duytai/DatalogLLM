@@ -1,0 +1,15 @@
+.decl person(p: symbol)
+.decl object(o: symbol)
+.decl causes_injury(o: symbol)
+.decl causes_damage(o: symbol)
+.decl throws(p: symbol, o: symbol)
+.decl violation(p: symbol, o: symbol)
+
+violation(p, o) :- person(p), object(o), throws(p, o), (causes_injury(o); causes_damage(o)).
+person("teenager1").
+object("rock").
+causes_injury("rock").
+causes_damage("rock").
+throws("teenager1", "rock").
+violation("teenager1", "rock").
+.output violation

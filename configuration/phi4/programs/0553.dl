@@ -1,0 +1,19 @@
+.decl person(p: symbol)
+.decl door(d: symbol)
+.decl platform_screen_door(d: symbol)
+.decl train_door(d: symbol)
+.decl interferes(p: symbol, d: symbol)
+.decl violation(p: symbol, d: symbol)
+
+violation(p, d) :- person(p), door(d), interferes(p, d), (platform_screen_door(d); train_door(d)).
+person("teenager1").
+person("teenager2").
+door("door1").
+door("door2").
+interferes("teenager1", "door1").
+interferes("teenager1", "door2").
+interferes("teenager2", "door1").
+interferes("teenager2", "door2").
+train_door("door1").
+train_door("door2").
+.output violation

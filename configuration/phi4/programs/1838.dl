@@ -1,0 +1,16 @@
+.decl person(p: symbol)
+.decl area(a: symbol)
+.decl government_statutory_area(a: symbol)
+.decl smokes(p: symbol, a: symbol)
+.decl violation(p: symbol, a: symbol)
+
+violation(p, a) :- person(p), area(a), government_statutory_area(a), smokes(p, a).
+person("soldier1").
+person("soldier2").
+area("MoD_facility").
+government_statutory_area("MoD_facility").
+smokes("soldier1", "MoD_facility").
+smokes("soldier2", "MoD_facility").
+violation("soldier1", "MoD_facility").
+violation("soldier2", "MoD_facility").
+.output violation

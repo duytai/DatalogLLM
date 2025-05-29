@@ -1,0 +1,36 @@
+.decl person(p: symbol)
+.decl premises(pr: symbol)
+.decl enters(p: symbol, pr: symbol)
+.decl remains(p: symbol, pr: symbol)
+.decl intoxicated(p: symbol)
+.decl under_influence(p: symbol)
+.decl violation(p: symbol, pr: symbol)
+
+violation(p, pr) :- person(p), premises(pr), (enters(p, pr); remains(p, pr)), (intoxicated(p); under_influence(p)).
+person("colleague1").
+person("colleague2").
+person("colleague3").
+premises("bar").
+premises("railway").
+enters("colleague1", "bar").
+enters("colleague2", "bar").
+enters("colleague3", "bar").
+remains("colleague1", "bar").
+remains("colleague2", "bar").
+remains("colleague3", "bar").
+enters("colleague1", "railway").
+enters("colleague2", "railway").
+enters("colleague3", "railway").
+remains("colleague1", "railway").
+remains("colleague2", "railway").
+remains("colleague3", "railway").
+intoxicated("colleague1").
+intoxicated("colleague2").
+intoxicated("colleague3").
+under_influence("colleague1").
+under_influence("colleague2").
+under_influence("colleague3").
+violation("colleague1", "railway").
+violation("colleague2", "railway").
+violation("colleague3", "railway").
+.output violation

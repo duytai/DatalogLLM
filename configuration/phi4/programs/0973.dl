@@ -1,0 +1,21 @@
+.decl person(p: symbol)
+.decl area(a: symbol)
+.decl train_area(a: symbol)
+.decl meant_for_passengers(a: symbol)
+.decl enters(p: symbol, a: symbol)
+.decl violation(p: symbol, a: symbol)
+
+violation(p, a) :- person(p), area(a), train_area(a), enters(p, a), !meant_for_passengers(a).
+person("friend1").
+person("friend2").
+person("friend3").
+area("restricted_area").
+train_area("restricted_area").
+meant_for_passengers("restricted_area").
+enters("friend1", "restricted_area").
+enters("friend2", "restricted_area").
+enters("friend3", "restricted_area").
+violation("friend1", "restricted_area").
+violation("friend2", "restricted_area").
+violation("friend3", "restricted_area").
+.output violation

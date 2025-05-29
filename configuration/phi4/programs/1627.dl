@@ -1,0 +1,19 @@
+.decl person(p: symbol)
+.decl motor_vehicle(mv: symbol)
+.decl premises(pr: symbol)
+.decl leaves(p: symbol, mv: symbol, pr: symbol)
+.decl has_written_permission(p: symbol, pr: symbol)
+.decl violation(p: symbol, mv: symbol, pr: symbol)
+
+violation(p, mv, pr) :- person(p), motor_vehicle(mv), premises(pr), leaves(p, mv, pr), !has_written_permission(p, pr).
+person("friend1").
+person("friend2").
+person("friend3").
+motor_vehicle("motorcycle1").
+motor_vehicle("motorcycle2").
+premises("station").
+leaves("friend1", "motorcycle1", "station").
+leaves("friend2", "motorcycle2", "station").
+// Assuming each friend left one motorcycle, and no written permissions were mentioned.
+// Therefore, no has_written_permission facts are added.
+.output violation

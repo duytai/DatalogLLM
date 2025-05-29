@@ -1,0 +1,13 @@
+.decl person(p: symbol)
+.decl facility(f: symbol)
+.decl recreational_facility(f: symbol)
+.decl smokes(p: symbol, f: symbol)
+.decl violation(p: symbol, f: symbol)
+
+violation(p, f) :- person(p), facility(f), recreational_facility(f), smokes(p, f).
+person("man1").
+facility("pool_area").
+recreational_facility("pool_area").
+smokes("man1", "pool_area").
+violation("man1", "pool_area").
+.output violation

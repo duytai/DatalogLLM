@@ -1,0 +1,17 @@
+.decl person(p: symbol)
+.decl individual(i: symbol)
+.decl liquor(l: symbol)
+.decl supplies(p: symbol, i: symbol, l: symbol)
+.decl age(i: symbol, a: number)
+.decl online_transaction(p: symbol, i: symbol, l: symbol)
+.decl telecommunication_transaction(p: symbol, i: symbol, l: symbol)
+.decl violation(p: symbol, i: symbol, l: symbol)
+
+violation(p, i, l) :- person(p), individual(i), liquor(l), supplies(p, i, l), age(i, a), a < 18, (online_transaction(p, i, l); telecommunication_transaction(p, i, l)).
+person("parent").
+individual("teenager").
+liquor("champagne").
+supplies("parent", "teenager", "champagne").
+age("teenager", 17).
+online_transaction("parent", "teenager", "champagne").
+.output violation

@@ -1,0 +1,16 @@
+.decl person(p: symbol)
+.decl item(i: symbol)
+.decl prohibited(i: symbol)
+.decl exceeds_size_limit(i: symbol)
+.decl exceeds_weight_limit(i: symbol)
+.decl causes_damage(i: symbol)
+.decl causes_inconvenience(i: symbol)
+.decl brings(p: symbol, i: symbol)
+.decl violation(p: symbol, i: symbol)
+
+violation(p, i) :- person(p), item(i), brings(p,i), (prohibited(i); exceeds_size_limit(i); exceeds_weight_limit(i); causes_damage(i); causes_inconvenience(i)).
+person("p1").
+item("i1").
+brings("p1", "i1").
+causes_inconvenience("i1").
+.output violation

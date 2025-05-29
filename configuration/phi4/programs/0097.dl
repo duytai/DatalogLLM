@@ -1,0 +1,19 @@
+.decl person(p: symbol)
+.decl license(l: symbol)
+.decl licensing_officer(o: symbol)
+.decl police_officer(o: symbol)
+.decl has_license(p: symbol, l: symbol)
+.decl requests_license(o: symbol, p: symbol)
+.decl fails_to_produce(p: symbol, l: symbol)
+.decl violation(p: symbol, l: symbol, o: symbol)
+
+violation(p, l, o) :- person(p), person(o), license(l), !has_license(p, l).
+violation(p, l, o) :- person(p), person(o), license(l), has_license(p, l), (licensing_officer(o); police_officer(o)), requests_license(o, p), fails_to_produce(p, l).
+person("manager").
+person("licensing_officer").
+license("liquor_license").
+licensing_officer("licensing_officer").
+has_license("manager", "liquor_license").
+requests_license("licensing_officer", "manager").
+fails_to_produce("manager", "liquor_license").
+.output violation

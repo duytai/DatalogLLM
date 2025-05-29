@@ -1,0 +1,15 @@
+.decl person(p: symbol)
+.decl premises(pr: symbol)
+.decl property(prop: symbol)
+.decl found_property(prop: symbol)
+.decl removes(p: symbol, prop: symbol, pr: symbol)
+.decl authorized(p: symbol)
+.decl violation(p: symbol, prop: symbol, pr: symbol)
+
+violation(p, prop, pr) :- person(p), premises(pr), property(prop), found_property(prop), removes(p, prop, pr), !authorized(p).
+person("maintenance_worker").
+premises("railway_station").
+property("unattended_bag").
+found_property("unattended_bag").
+removes("maintenance_worker", "unattended_bag", "railway_station").
+.output violation

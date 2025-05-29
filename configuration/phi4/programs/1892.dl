@@ -1,0 +1,11 @@
+.decl person(p: symbol)
+.decl water_body(w: symbol)
+.decl smokes(p: symbol, w: symbol)
+.decl violation(p: symbol, w: symbol)
+
+violation(p, w) :- person(p), water_body(w), smokes(p, w).
+person("family_member").
+water_body("lake").
+smokes("family_member", "lake").
+violation("family_member", "lake").
+.output violation

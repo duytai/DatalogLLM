@@ -1,0 +1,14 @@
+.decl person(p: symbol)
+.decl ticket(t: symbol)
+.decl uses(p: symbol, t: symbol)
+.decl expired(t: symbol)
+.decl invalid(t: symbol)
+.decl violation(p: symbol, t: symbol)
+
+violation(p, t) :- person(p), ticket(t), uses(p, t), (expired(t); invalid(t)).
+person("Sarah").
+ticket("ticket1").
+uses("Sarah", "ticket1").
+invalid("ticket1").
+violation("Sarah", "ticket1").
+.output violation

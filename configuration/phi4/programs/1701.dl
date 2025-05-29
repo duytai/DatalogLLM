@@ -1,0 +1,14 @@
+.decl person(p: symbol)
+.decl premises(pr: symbol)
+.decl drives(p: symbol, pr: symbol)
+.decl driving_dangerously(p: symbol, pr: symbol)
+.decl violation(p: symbol, pr: symbol)
+
+violation(p, pr) :- person(p), premises(pr), drives(p, pr), driving_dangerously(p, pr).
+person("driver1").
+premises("mechanical_failure").
+premises("railway_tracks").
+drives("driver1", "mechanical_failure").
+driving_dangerously("driver1", "mechanical_failure").
+violation("driver1", "mechanical_failure").
+.output violation

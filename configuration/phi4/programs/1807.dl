@@ -1,0 +1,13 @@
+.decl person(p: symbol)
+.decl facility(f: symbol)
+.decl educational_facility(f: symbol)
+.decl adjacent_area(f: symbol)
+.decl smokes(p: symbol, f: symbol)
+.decl violation(p: symbol, f: symbol)
+
+violation(p, f) :- person(p), facility(f), (educational_facility(f); adjacent_area(f)), smokes(p, f).
+person("teacher").
+facility("school_parking_lot").
+adjacent_area("school_parking_lot").
+smokes("teacher", "school_parking_lot").
+.output violation
